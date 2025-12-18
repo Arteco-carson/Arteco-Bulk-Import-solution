@@ -1,0 +1,25 @@
+{
+  "name": "bulk-import-api",
+  "version": "1.0.0",
+  "description": "Bulk import API for Arteco System using Azure Functions v4",
+  "main": "dist/*/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "clean": "rimraf dist",
+    "prestart": "npm run clean && npm run build",
+    "start": "func start --verbose",
+    "test": "echo \"No tests yet...\""
+  },
+  "devDependencies": {
+    "@azure/functions": "^4.10.0",
+    "@types/mssql": "^9.1.8",
+    "@types/node": "^20.19.27",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "csv-parse": "^6.1.0",
+    "mssql": "^12.2.0"
+  }
+}

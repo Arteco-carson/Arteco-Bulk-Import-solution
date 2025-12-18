@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2022",         // <--- CRITICAL FIX: Change from "es6" to "ES2020" or newer
+    "esModuleInterop": true,    // Recommended for Node.js modules
+    "outDir": "dist",
+    "rootDir": ".",
+    "sourceMap": true,
+    "strict": false
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

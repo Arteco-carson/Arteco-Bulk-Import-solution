@@ -1,0 +1,38 @@
+@baseUrl = http://localhost:7071/api
+
+### 1. Resources
+POST {{baseUrl}}/BulkImportResources
+Content-Type: text/csv
+
+title,article_summary,article_content,external_url,display_date_from,display_date_to,source_capture_location,raw_ArticleTypeName
+"Art Research 2028","Summary text here.","Long content text...","https://example.com","2025-01-01","2025-12-31","London","White Papers"
+
+### 2. Individual Members (Testing Multiple Service Providers)
+# Note: "Freelance Handlers, Shipping" will be split into two separate service records
+POST {{baseUrl}}/BulkImportIndividualMembers
+Content-Type: text/csv
+
+first_name,last_name,address_1,address_2,address_3,city,county,dob,telephone_number,email_address,website_url,profile_image_url,raw_country,raw_member_category,raw_services_provided,raw_source_type,raw_source_captured
+"Jane","boeds","1 High Street","Suite 5","West Wing","London","Greater London","1990-05-15","07700 900111","jane.doe@example.com","https://janedoe-art.co.uk","https://janedoe-art.co.uk/photo.jpg","United Kingdom","Service Providers","Freelance Handlers, Curators","Registered","Web Form"
+
+### 3. Company Members (Testing Multiple Service Providers)
+# Note: The T-SQL uses TRIM(), so spaces after commas (e.g., "Loss Adjustors, Valuers") are handled automatically
+POST {{baseUrl}}/BulkImportCompanyMembers
+Content-Type: text/csv
+
+company_name,address_1,address_2,address_3,city,county,telephone_number,email_address,website_url,raw_member_category,raw_services_provided,raw_source_captured,raw_country,raw_source_type
+"Arteco Finer Comapny","Unit 4, Gallery Way","Industrial Estate","Building C","Manchester","Greater Manchester","0161 123 4567","contact@arteco-finearts.co.uk","https://www.arteco-finearts.co.uk","Service Providers","Loss Adjustors, Framers, Software Providers","Directory Scraping","United Kingdom","Registered"
+
+### 4. Company Contacts
+POST {{baseUrl}}/BulkImportCompanyContacts
+Content-Type: text/csv
+
+company_name,first_name,last_name,position,email,phone,profile_image_url
+"Arteco Fine 2","Marcus","Artman","Senior Curator","m.artman@arteco-finearts.co.uk","07711 222333","https://arteco.co.uk/images/marcus.jpg"
+
+### 5. Events
+POST {{baseUrl}}/BulkImportEvents
+Content-Type: text/csv
+
+event_name,calendar_date_from,calendar_date_to,venue,address_1,city,county,telephone_number,email_address,raw_EventTypeName
+"Summer Gala 2027","2025-07-20","2025-07-22","The Grand Hall","12 Exhibition Road","London","London","020 8888 9999","events@grandhall.com","Art Fair"
