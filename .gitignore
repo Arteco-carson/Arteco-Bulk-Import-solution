@@ -1,1 +1,10 @@
 node_modules/
+# Environment variables
+.env
+.env.local
+
+# IDE and editor directories
+.vscode/
+
+# OS-generated files
+.DS_Store
